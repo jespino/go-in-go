@@ -1,4 +1,8 @@
-# go-in-go
+<p align="center">
+  <img src="assets/gopher-gopher.png" alt="The Go gopher in a Go gopher costume" width="240">
+</p>
+
+# go-in-go — Go modules for any Go version
 
 > [!WARNING]
 > Proof of concept. Module code is native code running in your process:
@@ -9,6 +13,10 @@ ELF file. Any Go program can then load the module and call into it, **whatever
 Go version that program is built with**. You build the module once and load it
 from a host built with Go 1.22, 1.26 or a future release. The host needs no
 cgo, no `dlopen` and no libc.
+
+**Documentation: <https://jespino.github.io/go-in-go/>**. New to go-in-go? The
+[tutorial](https://jespino.github.io/go-in-go/docs/tutorial/) walks you through building a module and
+calling it from Go programs built with different Go versions.
 
 ```sh
 go-in-go build examples/greeter                     # → examples/greeter/greeter.gig
@@ -194,7 +202,14 @@ These figures are from this machine (Go 1.26, TinyGo 0.44):
 | `internal/assets/_files/` | TinyGo target, runtime overlay, mini libc |
 | `examples/greeter/` | an example module |
 | `examples/host/` | a host program using it, with generated bindings |
+| `site/` | the website (Hugo): `make site`, `make site-serve` |
 | `test/` | integration tests (all types both ways, panics, faults, stack overflow, reentrancy, GC on both sides, heap growth, background goroutines, pools, versions) |
 
 Requirements to build modules: TinyGo (tested with 0.44.0) and binutils'
 `objcopy`. Loading modules only needs the `gig` package.
+
+## Mascot
+
+The go-in-go mascot is the Go gopher dressed as a Go gopher. It's based on
+the Go gopher designed by [Renée French](https://reneefrench.blogspot.com/),
+licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

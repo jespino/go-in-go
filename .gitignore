@@ -1,2 +1,8 @@
 /go-in-go
 *.gig
+
+# website build output and generated API reference
+/site/public/
+/site/resources/
+/site/content/api/
+/site/.hugo_build.lock
