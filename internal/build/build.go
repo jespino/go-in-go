@@ -53,6 +53,11 @@ func Build(opts Options) (string, error) {
 	if out == "" {
 		out = filepath.Join(proj, filepath.Base(modPath)+".gig")
 	}
+	// objcopy runs in the work directory: a relative -o means relative to
+	// the caller's directory.
+	if out, err = filepath.Abs(out); err != nil {
+		return "", err
+	}
 	for _, tool := range []string{"tinygo", "objcopy"} {
 		if _, err := exec.LookPath(tool); err != nil {
 			return "", fmt.Errorf("%s not found in PATH", tool)
