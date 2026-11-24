@@ -59,6 +59,32 @@ works:
 GOTOOLCHAIN=go1.22.12 CGO_ENABLED=0 go run ./examples/host
 ```
 
+## go-plugin's examples
+
+[`examples/goplugin`](https://github.com/jespino/go-in-go/tree/main/examples/goplugin)
+rebuilds the five examples of
+[hashicorp/go-plugin](https://github.com/hashicorp/go-plugin/tree/main/examples)
+with go-in-go. The plugins are modules loaded into the host process, not
+subprocesses reached over RPC:
+
+| go-plugin example | Shows |
+|---|---|
+| `basic` | loading a plugin and calling it; the plugin logs through the host's `slog` logger |
+| `grpc` (here `kv`) | a key/value CLI with its storage in a plugin picked at run time, and two implementations behind the same bindings |
+| `bidirectional` | the plugin calling back into the host (an import) in the middle of a call |
+| `negotiated` | one plugin with protocol versions 2 and 3, agreeing on one with the host |
+| `streaming` | chunks streamed both ways: an export per chunk into the plugin, an import per chunk back |
+
+Plugins can't open files themselves, so the hosts give them file access
+limited to one directory through imports. The examples'
+[README](https://github.com/jespino/go-in-go/tree/main/examples/goplugin)
+maps each go-plugin concept to its go-in-go equivalent. Build and run them
+all, with their output checked:
+
+```sh
+make goplugin
+```
+
 ## The test module
 
 [`test/testdata/kitchen`](https://github.com/jespino/go-in-go/tree/main/test/testdata/kitchen)

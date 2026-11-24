@@ -1,6 +1,7 @@
 # make            build ./go-in-go
 # make test       vet + integration tests (needs tinygo)
 # make example    build the greeter module and run the example host
+# make goplugin   build and run the hashicorp/go-plugin examples (examples/goplugin)
 # make versions   build the test module once, run the tests with Go 1.22..1.26
 # make site       build the website (site/) into site/public/
 # make site-serve preview the website at http://localhost:1313/go-in-go/
@@ -10,7 +11,7 @@ HUGO ?= hugo
 GO_VERSIONS ?= go1.22.12 go1.23.12 go1.24.13 go1.25.9 local
 KITCHEN := $(shell mktemp -u /tmp/kitchen-XXXXXX).gig
 
-.PHONY: all go-in-go test example versions site site-api site-serve clean
+.PHONY: all go-in-go test example goplugin versions site site-api site-serve clean
 all: go-in-go
 
 go-in-go:
@@ -23,6 +24,9 @@ test: go-in-go
 example: go-in-go
 	./go-in-go build examples/greeter
 	go run ./examples/host examples/greeter/greeter.gig
+
+goplugin: go-in-go
+	./examples/goplugin/run.sh
 
 versions: go-in-go
 	./go-in-go build -o $(KITCHEN) test/testdata/kitchen
@@ -46,4 +50,4 @@ site-serve: site-api
 	$(HUGO) server --source site
 
 clean:
-	rm -rf go-in-go site/public site/resources site/content/api site/.hugo_build.lock examples/*/*.gig
+	rm -rf go-in-go site/public site/resources site/content/api site/.hugo_build.lock examples/*/*.gig examples/goplugin/*/*/*.gig

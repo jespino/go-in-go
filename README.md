@@ -202,6 +202,7 @@ These figures are from this machine (Go 1.26, TinyGo 0.44):
 | `internal/assets/_files/` | TinyGo target, runtime overlay, mini libc |
 | `examples/greeter/` | an example module |
 | `examples/host/` | a host program using it, with generated bindings |
+| `examples/goplugin/` | hashicorp/go-plugin's examples rebuilt with go-in-go (`make goplugin`) |
 | `site/` | the website (Hugo): `make site`, `make site-serve` |
 | `test/` | integration tests (all types both ways, panics, faults, stack overflow, reentrancy, GC on both sides, heap growth, background goroutines, pools, versions) |
 
