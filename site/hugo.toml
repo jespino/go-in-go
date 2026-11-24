@@ -1,7 +1,6 @@
 baseURL = "https://jespino.github.io/go-in-go/"
 title = "go-in-go"
 locale = "en-US"
-theme = "gopherdocs"
 disableKinds = ["taxonomy", "term", "rss"]
 enableRobotsTXT = true
 
@@ -44,3 +43,7 @@ enableRobotsTXT = true
 [[module.mounts]]
   source = "../assets"
   target = "static/img"
+
+# The gopherdocs theme, shared with the other tinyguest-based tools.
+[[module.imports]]
+  path = "github.com/jespino/tinyguest/theme"

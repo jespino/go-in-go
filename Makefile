@@ -37,11 +37,11 @@ versions: go-in-go
 	rm -f $(KITCHEN)
 
 site-api:
-	cd site/apidoc && go run . -src ../.. -import github.com/jespino/go-in-go \
+	go run github.com/jespino/tinyguest/cmd/apidoc -src . -import github.com/jespino/go-in-go \
 		-skip assets,examples,internal,site,test \
 		-desc "The gig package: load go-in-go modules and call them, generated from its doc comments." \
 		-intro "Generated from the doc comments. Host programs import it; generated bindings are built on it." \
-		-out ../content/api
+		-out site/content/api
 
 site: site-api
 	$(HUGO) --source site --minify --gc
