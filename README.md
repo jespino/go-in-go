@@ -214,3 +214,7 @@ Requirements to build modules: TinyGo (tested with 0.44.0) and binutils'
 The go-in-go mascot is the Go gopher dressed as a Go gopher. It's based on
 the Go gopher designed by [Renée French](https://reneefrench.blogspot.com/),
 licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## License
+
+go-in-go is released under the [MIT License](LICENSE).

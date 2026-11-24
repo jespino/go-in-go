@@ -16,6 +16,7 @@ enableRobotsTXT = true
   accent = "#007d9c"
   accentDark = "#5dc9e2"
   sidebar = ["/docs", "/api"]
+  license = "Released under the [MIT License](https://github.com/jespino/go-in-go/blob/main/LICENSE)."
   footer = "The mascot is based on the Go gopher by [Renée French](https://reneefrench.blogspot.com/) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)), dressed as a Go gopher: Go inside Go."
 
 [[menus.main]]
